@@ -13,6 +13,8 @@ const Layout = ({ children }) => {
     "
     >
       <Flex
+        m="auto"
+        maxW="container.xl"
         color="white"
         align="center"
         height={16}
@@ -27,14 +29,14 @@ const Layout = ({ children }) => {
             </Heading>
           </Flex>
         </Link>
-        <Flex fontWeight="bold" fontSize="md">
+        <Flex display={["none"]} fontWeight="bold" fontSize="md">
           <HStack spacing={8}>
             <Link href="/">Home</Link>
             <Link href="/about">About</Link>
             <Link href="/allcampaigns">All Campaigns</Link>
           </HStack>
         </Flex>
-        <Flex>
+        <Flex display={["none"]}>
           <Button
             py={6}
             fontSize="md"

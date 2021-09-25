@@ -1,4 +1,4 @@
-import { Container, Heading, Flex, VStack } from "@chakra-ui/react";
+import { Container, Button, Flex, VStack } from "@chakra-ui/react";
 
 import Link from "next/link";
 import Header from "../components/Header";
@@ -7,9 +7,9 @@ import factory from "../ethereum/factory";
 
 export default function Home({ campaigns }) {
   return (
-    <Container maxW="container.xl" px={10} py={4}>
+    <Container maxW="container.xl" px={[6, 10]} py={4}>
       <Header />
-      <Flex bg="white">
+      <Flex>
         <Flex
           justifyContent="space-around"
           direction={["column-reverse", "column-reverse", "row"]}
@@ -18,8 +18,9 @@ export default function Home({ campaigns }) {
             {campaigns.map((address, i) => {
               return (
                 <Flex
+                  bg="whiteAlpha.700"
                   direction="column"
-                  w="xl"
+                  // maxW="lg"
                   fontSize="sm"
                   borderRadius="md"
                   boxShadow="xl"
