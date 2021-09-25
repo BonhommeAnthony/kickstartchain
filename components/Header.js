@@ -4,14 +4,19 @@ import { FiPlus, FiGithub } from "react-icons/fi";
 
 const Header = () => {
   return (
-    <Flex my={[5, 14]} direction="column">
-      <VStack alignItems="flex-start" spacing={12}>
-        <Heading w={["100%", "50%"]} color="white" fontSize="43px" as="h3">
+    <Flex my={[20, "150px"]} direction="column">
+      <VStack alignItems="flex-start" spacing={[12, 14]}>
+        <Heading
+          w={["100%", "50%"]}
+          color="white"
+          fontSize={["43px", "60px"]}
+          as="h3"
+        >
           Create your crowdfunding on the Ethereum Blockchain easily.
         </Heading>
         <Text
           lineHeight="2rem"
-          w={["100%", "50%"]}
+          w={["100%", "40%"]}
           fontWeight="bold"
           fontSize="17px"
           color="white"
