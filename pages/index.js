@@ -1,4 +1,4 @@
-import { Container, Button, Flex, VStack } from "@chakra-ui/react";
+import { Container, Heading, Flex, VStack } from "@chakra-ui/react";
 
 import Link from "next/link";
 import Header from "../components/Header";
