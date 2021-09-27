@@ -1,10 +1,17 @@
 import { Heading, Text, Button, Flex, Stack, VStack } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 import { FiPlus, FiGithub } from "react-icons/fi";
 
 const Header = () => {
+  const router = useRouter();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push("/campaigns/new");
+  };
   return (
-    <Flex my={[20, "150px"]} direction="column">
+    <>
       <VStack alignItems="flex-start" spacing={[12, 14]}>
         <Heading
           w={["100%", "50%"]}
@@ -27,6 +34,7 @@ const Header = () => {
 
         <Stack w="full" direction={["column", "row"]} spacing={4}>
           <Button
+            onClick={handleClick}
             borderRadius="lg"
             boxShadow="xl"
             py={7}
@@ -47,7 +55,7 @@ const Header = () => {
           </Button>
         </Stack>
       </VStack>
-    </Flex>
+    </>
   );
 };
 

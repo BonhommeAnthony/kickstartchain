@@ -1,4 +1,5 @@
-import { Container, Heading, Flex, VStack } from "@chakra-ui/react";
+import { Container, Heading, Flex, Divider } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 
 import Link from "next/link";
 import Header from "../components/Header";
@@ -7,30 +8,37 @@ import factory from "../ethereum/factory";
 
 export default function Home({ campaigns }) {
   return (
-    <Container px={[4, 0]} overflow="hidden" maxW="container.xl" py={4}>
+    <Container px={[5, 6]} maxW="container.xl" py={4}>
       <Header />
-      <Flex
-        justifyContent="space-around"
-        direction={["column-reverse", "column-reverse", "row"]}
-      >
-        {campaigns.map((address, i) => {
-          return (
-            <Flex
-              bg="whiteAlpha.700"
-              direction="column"
-              fontSize="13px"
-              borderRadius="md"
-              boxShadow="xl"
-              key={i}
-              p={4}
-            >
-              <Heading fontSize="16px" as="h4">
-                {address}
-              </Heading>
-              <Link href="/">View Campaign</Link>
-            </Flex>
-          );
-        })}
+      <Divider my={10} />
+      <Flex justify="center" direction="column">
+        <Heading as="h3" color="white" mb={10}>
+          All Campaign{" "}
+        </Heading>
+        <SimpleGrid columns={[1, 2]} spacing={10}>
+          {campaigns.map((address, i) => {
+            return (
+              <Flex
+                bg="whiteAlpha.400"
+                backdropBlur="blur(64px)"
+                borderTop="1px"
+                borderLeft="1px"
+                borderStyle="inset"
+                direction="column"
+                fontSize="13px"
+                borderRadius="md"
+                boxShadow="xl"
+                key={i}
+                p={4}
+              >
+                <Heading fontSize="16px" as="h4">
+                  {address}
+                </Heading>
+                <Link href="/">View Campaign</Link>
+              </Flex>
+            );
+          })}
+        </SimpleGrid>
       </Flex>
     </Container>
   );
