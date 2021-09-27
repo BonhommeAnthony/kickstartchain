@@ -73,11 +73,12 @@ const CampaignNew = () => {
               <FormLabel color="white">Minimum Contribution</FormLabel>
               <InputGroup>
                 <Input
+                  backgroundColor="whiteAlpha.600"
                   type="number"
                   value={minimumContribution}
                   onChange={(e) => setminimumContribution(e.target.value)}
                 />
-                <InputRightAddon children="wei" />
+                <InputRightAddon>wei</InputRightAddon>
               </InputGroup>
             </FormControl>
             <Button
