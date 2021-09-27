@@ -1,5 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 
 import { useRouter } from "next/router";
 import Navbar from "./Navbar";
@@ -22,6 +23,10 @@ const Layout = ({ children }) => {
       flexDir="column"
       m="auto"
     >
+      <Head>
+        <title>KickstartChain</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Navbar handleClick={handleClick} />
       <Flex my={[20, "150px"]} direction="column">
         {children}

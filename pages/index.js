@@ -15,7 +15,7 @@ export default function Home({ campaigns }) {
         <Heading as="h3" color="white" mb={10}>
           All Campaign{" "}
         </Heading>
-        <SimpleGrid columns={[1, 2]} spacing={10}>
+        <SimpleGrid columns={[1, 2]} spacing={5}>
           {campaigns.map((address, i) => {
             return (
               <Flex
@@ -34,7 +34,7 @@ export default function Home({ campaigns }) {
                 <Heading fontSize="16px" as="h4">
                   {address}
                 </Heading>
-                <Link href="/">View Campaign</Link>
+                <Link href={`/campaigns/${address}`}>View Campaign</Link>
               </Flex>
             );
           })}
