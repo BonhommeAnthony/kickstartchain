@@ -19,6 +19,7 @@ const CampaignNew = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMessage("");
     try {
       const accounts = await web3.eth.getAccounts();
       await factory.methods.createCampaign(minimumContribution).send({
