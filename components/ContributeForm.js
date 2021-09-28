@@ -10,7 +10,7 @@ import web3 from "../ethereum/web3";
 
 const ContributeForm = ({ campaignAddress }) => {
   const [contribution, setContribution] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -20,7 +20,7 @@ const ContributeForm = ({ campaignAddress }) => {
     e.preventDefault();
     const campaign = Campaign(campaignAddress);
     setLoading(true);
-    setErrorMessage("");
+
     try {
       const accounts = await web3.eth.getAccounts();
       await campaign.methods.contribute().send({
@@ -36,10 +36,9 @@ const ContributeForm = ({ campaignAddress }) => {
         isClosable: true,
       });
     } catch (error) {
-      setErrorMessage(error.message);
       toast({
         title: "Error",
-        description: errorMessage,
+        description: error.message,
         status: "error",
         duration: 9000,
         isClosable: true,

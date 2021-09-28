@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 
 const CampaignNew = () => {
   const [minimumContribution, setminimumContribution] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -19,7 +19,7 @@ const CampaignNew = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setErrorMessage("");
+
     try {
       const accounts = await web3.eth.getAccounts();
       await factory.methods.createCampaign(minimumContribution).send({
@@ -34,10 +34,9 @@ const CampaignNew = () => {
         isClosable: true,
       });
     } catch (error) {
-      setErrorMessage(error.message);
       toast({
         title: "Error",
-        description: errorMessage,
+        description: error.message,
         status: "error",
         duration: 9000,
         isClosable: true,
