@@ -1,4 +1,5 @@
 import { Button } from "@chakra-ui/button";
+import { Image } from "@chakra-ui/image";
 import {
   Badge,
   Container,
@@ -10,7 +11,6 @@ import {
   SimpleGrid,
   Stack,
   Text,
-  VStack,
 } from "@chakra-ui/layout";
 import { useRouter } from "next/router";
 import React from "react";
@@ -56,13 +56,36 @@ const Campaign = ({ summary }) => {
 
   return (
     <Container px={6} maxW="container.xl" py={4}>
-      <Heading mb={10} size="md" color="white" as="h3">
-        Campaign : {campaignAddress}
+      <Heading
+        textTransform="uppercase"
+        mb={10}
+        size="lg"
+        color="white"
+        as="h3"
+      >
+        {summary.name}
       </Heading>
+      <Text color="white" fontWeight="bold">
+        {summary.description}
+      </Text>
+      <Text color="white" mt={4}>
+        Campaign balance
+        <Badge borderRadius="full" colorScheme="blue" ml={1}>
+          {" "}
+          {web3.utils.fromWei(summary.balance, "ether")} Ether
+        </Badge>
+      </Text>
       <Divider my={10} />
-      <SimpleGrid spacing={10} columns={[1, 3]}>
+      <SimpleGrid spacingX={[0, 10]} spacing={10} columns={[1, 3]}>
         <GridItem colSpan={2}>
           <SimpleGrid columns={[1, 2]} spacing={5}>
+            <GridItem colSpan={[1, 2]}>
+              <Image
+                borderRadius="lg"
+                src={summary.imageUrl}
+                alt={summary.name}
+              />
+            </GridItem>
             {infos.map((info, i) => {
               return (
                 <Flex
@@ -159,6 +182,9 @@ export async function getServerSideProps({ params }) {
         requestsCount: summary[2],
         approversCount: summary[3],
         manager: summary[4],
+        name: summary[5],
+        description: summary[6],
+        imageUrl: summary[7],
       },
     },
   };

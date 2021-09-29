@@ -79,12 +79,15 @@ const RequestNew = () => {
         <Heading size="xl" color="white" as="h3">
           Create a Request
         </Heading>
-        <Text color="white">Create a Request for this campaign !</Text>
+        <Text color="white">
+          Create a Request for this campaign !(Only manager can create request)
+        </Text>
         <form onSubmit={onSubmit}>
           <VStack spacing={10}>
             <FormControl>
               <FormLabel color="white">Description</FormLabel>
               <Input
+                isRequired
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 backgroundColor="whiteAlpha.600"
@@ -104,7 +107,10 @@ const RequestNew = () => {
               </InputGroup>
             </FormControl>
             <FormControl>
-              <FormLabel color="white">Recipient</FormLabel>
+              <FormLabel color="white">
+                Recipient (This is where the money is going if the request is
+                approved)
+              </FormLabel>
               <InputGroup>
                 <Input
                   value={recipient}
@@ -116,6 +122,7 @@ const RequestNew = () => {
               </InputGroup>
             </FormControl>
             <Button
+              isDisabled={value <= 0 ? true : false}
               isLoading={loading}
               loadingText="Submitting"
               type="submit"

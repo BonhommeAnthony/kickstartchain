@@ -4,9 +4,9 @@ contract CampaignFactory{
     address[] public deployedCampaigns;
     
     
-    function createCampaign(uint _minimum) public {
+    function createCampaign(uint _minimum, string memory _campaignName, string memory _campaignDescription, string memory _campaignImage) public {
         
-       Campaign newCampaign = new Campaign(_minimum, msg.sender);
+       Campaign newCampaign = new Campaign(_minimum, msg.sender, _campaignName, _campaignDescription, _campaignImage );
        deployedCampaigns.push(address(newCampaign)); 
         
     }
@@ -38,14 +38,20 @@ contract Campaign {
     
     address public manager;
     uint public minimumContribution;
+    string public campaignName;
+    string public campaignDescription;
+    string public campaignImage;
     mapping(address => bool) public approvers ;
     uint numRequests;
     mapping (uint => Request) public requests;
     uint public approversCount;
     
-    constructor(uint _minimum, address _creator)  {
+    constructor(uint _minimum, address _creator,string memory _campaignName, string memory _campaignDescription, string memory _campaignImage )  {
         manager = _creator;
         minimumContribution = _minimum;
+        campaignName = _campaignName;
+        campaignDescription = _campaignDescription;
+        campaignImage = _campaignImage;
     }
     
     function contribute() public payable {
@@ -85,13 +91,16 @@ contract Campaign {
         request.complete = true;
     }
     
-    function getSummary() public view returns (uint,uint,uint,uint, address) {
+    function getSummary() public view returns (uint,uint,uint,uint, address,string memory,string memory,string memory) {
         return (
             minimumContribution,
             address(this).balance,
             numRequests,
             approversCount,
-            manager
+            manager,
+            campaignName,
+            campaignDescription,
+            campaignImage
         );
     }
 

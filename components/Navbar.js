@@ -51,6 +51,7 @@ const Navbar = ({ handleClick }) => {
 
   return (
     <Flex
+      zIndex="5"
       bgColor={navBackground == true ? "whiteAlpha.900" : ""}
       w="100%"
       pos="fixed"

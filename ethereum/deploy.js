@@ -5,8 +5,8 @@ const Web3 = require("web3");
 const compiledFactory = require("./build/CampaignFactory.json");
 
 const provider = new HDWalletProvider(
-  process.env.WALLET_MNEMONIC,
-  process.env.INFURA_ENDPOINT
+  process.env.NEXT_PUBLIC_WALLET_MNEMONIC,
+  process.env.NEXT_PUBLIC_INFURA_ENDPOINT
 );
 const web3 = new Web3(provider);
 

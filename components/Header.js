@@ -45,6 +45,9 @@ const Header = () => {
           </Button>
 
           <Button
+            onClick={() =>
+              router.push("https://github.com/BonhommeAnthony/kickstartchain")
+            }
             borderRadius="lg"
             boxShadow="xl"
             py={7}

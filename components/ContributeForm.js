@@ -79,6 +79,7 @@ const ContributeForm = ({ campaignAddress }) => {
             </InputGroup>
           </FormControl>
           <Button
+            isDisabled={contribution <= 0 ? true : false}
             isLoading={loading}
             loadingText="Submitting"
             type="submit"

@@ -44,6 +44,7 @@ const RequestIndex = ({ requests, address, approversCount, requestCount }) => {
             await campaign.methods.approveRequest(i).send({
               from: accounts[0],
             });
+            router.reload();
           };
           const onFinalize = async () => {
             const campaign = Campaign(address);
@@ -52,6 +53,7 @@ const RequestIndex = ({ requests, address, approversCount, requestCount }) => {
             await campaign.methods.finalizeRequest(i).send({
               from: accounts[0],
             });
+            router.reload();
           };
 
           return (
@@ -102,6 +104,7 @@ const RequestIndex = ({ requests, address, approversCount, requestCount }) => {
                   </StatHelpText>
                 </Stat>
                 <Divider />
+                <Text>Only manager can finalize request</Text>
                 <Flex justify="center">
                   <HStack>
                     <Button
