@@ -11,32 +11,14 @@ import {
 } from "@chakra-ui/layout";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import fetchCampaign from "../ethereum/campaign";
 
-const ProjectCard = ({ campaigns }) => {
+const ProjectCard = ({ campaigns, address }) => {
   const router = useRouter();
+  const [summary, setSummary] = useState("");
   return (
     <SimpleGrid columns={[1, 4]} spacing={5}>
-      {campaigns.map((address, i) => {
-        const [summary, setSummary] = useState("");
-        useEffect(() => {
-          const fetchSummary = async () => {
-            const campaign = fetchCampaign(address);
-            const summary = await campaign.methods.getSummary().call();
-            setSummary({
-              minimumContribution: summary[0],
-              balance: summary[1],
-              requestsCount: summary[2],
-              approversCount: summary[3],
-              manager: summary[4],
-              name: summary[5],
-              description: summary[6],
-              imageUrl: summary[7],
-            });
-          };
-          fetchSummary();
-        }, []);
-
+      {campaigns.map((campaign, i) => {
+        console.log(campaign);
         return (
           <Flex
             bg="whiteAlpha.400"
@@ -54,9 +36,10 @@ const ProjectCard = ({ campaigns }) => {
           >
             <Stack spacing={3}>
               <Image
+                height="200px"
                 borderRadius="lg"
-                src={summary.imageUrl}
-                alt={summary.name}
+                src={campaign.imageUrl}
+                alt={campaign.name}
               />
               <Flex alignItems="center">
                 <Badge borderRadius="full" px="2" colorScheme="blue">
@@ -70,24 +53,24 @@ const ProjectCard = ({ campaigns }) => {
                   fontWeight="semibold"
                   letterSpacing="wide"
                 >
-                  {summary.name}
+                  {campaign.name}
                 </Heading>
               </Flex>
               <Divider />
               <Text fontWeight="bold" fontSize="sm">
-                {summary.description}
+                {campaign.description}
               </Text>
               <Divider />
               <Text fontWeight="bold" fontSize="sm">
                 Minimum contribution :{" "}
                 <Badge borderRadius="full" px="2" colorScheme="blue">
-                  {summary.minimumContribution}
+                  {campaign.minimumContribution}
                   wei
                 </Badge>
               </Text>
               <Divider />
               <Button
-                onClick={() => router.push(`/campaigns/${address}`)}
+                onClick={() => router.push(`/campaigns/${address[i]}`)}
                 borderRadius="lg"
                 boxShadow="xl"
                 colorScheme="blue"
