@@ -1,6 +1,5 @@
 import { Heading, Text, Button, Flex, Stack, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-
 import { FiPlus, FiGithub } from "react-icons/fi";
 
 const Header = () => {
@@ -28,8 +27,8 @@ const Header = () => {
           fontSize="17px"
           color="white"
         >
-          KickstartChain is a personnal open-source project on the Rinkeby
-          testnet. This is not for real life project.
+          KickstartChain is a personal open-source project on the Rinkeby
+          testnet. This is not for real-life projects.
         </Text>
 
         <Stack w="full" direction={["column", "row"]} spacing={4}>

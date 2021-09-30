@@ -154,7 +154,6 @@ export async function getServerSideProps({ params }) {
       return { description, value, recipient, complete, approvalsCount };
     }
   );
-  console.log(sanitizedRequests);
 
   return {
     props: {

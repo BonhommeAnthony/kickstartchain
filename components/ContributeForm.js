@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/button";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input, InputGroup, InputRightAddon } from "@chakra-ui/input";
-import { Badge, Flex, Heading, Stack, Text, VStack } from "@chakra-ui/layout";
+import { Badge, Flex, Stack } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -10,7 +10,6 @@ import web3 from "../ethereum/web3";
 
 const ContributeForm = ({ campaignAddress }) => {
   const [contribution, setContribution] = useState("");
-
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();

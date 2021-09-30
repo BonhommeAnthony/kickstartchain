@@ -1,16 +1,12 @@
-import { Container, Heading, Flex, Divider } from "@chakra-ui/react";
-import Header from "../components/Header";
-import factory from "../ethereum/factory";
-import { useRouter } from "next/router";
+import React from "react";
 import ProjectCard from "../components/ProjectCard";
+import { Container, Heading, Flex } from "@chakra-ui/react";
+import factory from "../ethereum/factory";
 import fetchCampaign from "../ethereum/campaign";
-import web3 from "../ethereum/web3";
 
-export default function Home({ sanitizedCampaign, Deployedcampaigns }) {
+const allCampaigns = ({ Deployedcampaigns, sanitizedCampaign }) => {
   return (
     <Container px={[5, 6]} maxW="container.xl" py={4}>
-      <Header />
-      <Divider my={10} />
       <Flex justify="center" direction="column">
         <Heading as="h3" color="white" mb={10}>
           Campaign available
@@ -22,7 +18,9 @@ export default function Home({ sanitizedCampaign, Deployedcampaigns }) {
       </Flex>
     </Container>
   );
-}
+};
+
+export default allCampaigns;
 
 export async function getServerSideProps(context) {
   const Deployedcampaigns = await factory.methods.getDeployedCampaigns().call();

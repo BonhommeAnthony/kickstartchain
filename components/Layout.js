@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Head from "next/head";
-import { Box, Divider, HStack, Stack, Text } from "@chakra-ui/layout";
+import { Box, Divider, HStack, Text } from "@chakra-ui/layout";
 import { Icon } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import Navbar from "./Navbar";

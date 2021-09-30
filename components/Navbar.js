@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaEthereum } from "react-icons/fa";
 import Link from "next/link";
-import { FiPlus, FiMenu, FiX } from "react-icons/fi";
+import { FiPlus, FiMenu } from "react-icons/fi";
 import {
   Flex,
   Heading,
@@ -14,11 +14,9 @@ import {
   MenuItem,
   IconButton,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 
 const Navbar = ({ handleClick }) => {
   const [navBackground, setNavBackground] = useState(false);
-  const router = useRouter();
 
   const navRef = React.useRef();
   navRef.current = navBackground;
@@ -41,11 +39,7 @@ const Navbar = ({ handleClick }) => {
     },
     {
       name: "All Campaigns",
-      href: "allcampaigns",
-    },
-    {
-      name: "About",
-      href: "about",
+      href: "allCampaigns",
     },
   ];
 
@@ -80,12 +74,7 @@ const Navbar = ({ handleClick }) => {
             </Heading>
           </Flex>
         </Link>
-        <Flex
-          display={["none", "none", "flex"]}
-          fontWeight="bold"
-          fontSize="md"
-          color={navBackground == true ? "black" : "white"}
-        >
+        <Flex display={["none", "none", "flex"]}>
           <HStack spacing={8}>
             {NavItem.map((item, i) => (
               <Link key={i} href={item.href}>
@@ -100,22 +89,21 @@ const Navbar = ({ handleClick }) => {
                 </Button>
               </Link>
             ))}
+            <Button
+              onClick={handleClick}
+              py={6}
+              fontSize="md"
+              borderRadius="lg"
+              boxShadow="xl"
+              colorScheme={navBackground == true ? "blackAlpha" : "whiteAlpha"}
+              leftIcon={<FiPlus />}
+              _hover={{ transform: "scale(1.02)" }}
+            >
+              Create Campaign
+            </Button>
           </HStack>
         </Flex>
-        <Flex display={["none", "none", "flex"]}>
-          <Button
-            onClick={handleClick}
-            py={6}
-            fontSize="md"
-            borderRadius="lg"
-            boxShadow="xl"
-            colorScheme={navBackground == true ? "blackAlpha" : "whiteAlpha"}
-            leftIcon={<FiPlus />}
-            _hover={{ transform: "scale(1.02)" }}
-          >
-            Create Campaign
-          </Button>
-        </Flex>
+
         <Menu autoSelect={false}>
           <MenuButton display={["flex", "flex", "none", "none"]}>
             <IconButton

@@ -10,15 +10,13 @@ import {
   Text,
 } from "@chakra-ui/layout";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const ProjectCard = ({ campaigns, address }) => {
   const router = useRouter();
-  const [summary, setSummary] = useState("");
   return (
     <SimpleGrid columns={[1, 4]} spacing={5}>
       {campaigns.map((campaign, i) => {
-        console.log(campaign);
         return (
           <Flex
             bg="whiteAlpha.400"
