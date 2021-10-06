@@ -55,7 +55,7 @@ const ProjectCard = ({ campaigns, address }) => {
                 </Heading>
               </Flex>
               <Divider />
-              <Text fontWeight="bold" fontSize="sm">
+              <Text h="60px" fontWeight="bold" fontSize="sm">
                 {campaign.description}
               </Text>
               <Divider />
